@@ -11,16 +11,6 @@ venv/
 .vscode/
 
 
-/data/raw/
-/data/processed/
-
-
-/models/*.pkl
-/models/*.joblib
-/models/*.h5
-/models/*.pth
-
-
 output/
 results/
 logs/
