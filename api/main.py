@@ -40,23 +40,21 @@ async def health_check():
         regression_model=config.REGRESSION_MODEL_NAME
     )
 
-# Dans main.py - remplacer l'ancien endpoint /predict
+# Endpoint de prédiction
 @app.post("/predict", response_model=PredictionResponse)
-async def predict(student: StudentInput):  # ← StudentInput au lieu de StudentFeatures
+async def predict(student: StudentInput):
     try:
-        # Conversion automatique et prétraitement
-        features = student.to_features()
-        
-        result = PredictionResponse(features_used=features)
+        # Créer une instance vide de PredictionResponse
+        result = PredictionResponse()
         
         if student.prediction_type == "classification":
-            prediction = model_client.predict_classification(features)
+            prediction = model_client.predict_classification(student)
             result.classification = ClassificationResponse(
                 prediction=int(prediction[0]),
                 model_name=config.CLASSIFICATION_MODEL_NAME
             )
         elif student.prediction_type == "regression":
-            prediction = model_client.predict_regression(features)
+            prediction = model_client.predict_regression(student)
             result.regression = RegressionResponse(
                 prediction=float(prediction[0]),
                 model_name=config.REGRESSION_MODEL_NAME
