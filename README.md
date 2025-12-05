@@ -14,7 +14,6 @@ API de prédiction développée avec FastAPI permettant d'évaluer la réussite 
 
 ### Installation des Dépendances
 ```bash
-cd api
 pip install -r requirements.txt
 ```
 
