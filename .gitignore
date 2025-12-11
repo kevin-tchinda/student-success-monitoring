@@ -11,6 +11,7 @@ notebooks/.ipynb_checkpoints
 *.log
 *~
 .vscode/
+.pylintrc
 
 
 output/
